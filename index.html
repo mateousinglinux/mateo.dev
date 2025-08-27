@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>mateo.dev</title>
+  <style>
+    /* universal reset */
+    *{box-sizing:border-box;font-family: "ms sans serif", Tahoma, Verdana, Arial, sans-serif;}
+    html,body{height:100%;margin:0;background:#008080 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><rect width="40" height="40" fill="%23008080"/><circle cx="20" cy="20" r="2" fill="%23006b6b"/></svg>') repeat;}
+    img{display:block;max-width:100%}
+    /* lowercase everything visually */
+    body{text-transform:lowercase;color:#000}
+
+    /* container */
+    .desktop{padding:18px;display:flex;gap:18px}
+
+    /* window style (win95-ish) */
+    .win{
+      background:#c0c0c0;border:2px solid #fff;box-shadow:inset 1px 1px 0 rgba(255,255,255,.9), 2px 2px 0 rgba(0,0,0,.25);border-bottom-color:#808080;border-right-color:#808080;
+      width:560px;
+    }
+    .titlebar{background:linear-gradient(#00008b,#00006a);color:#fff;padding:6px 8px;display:flex;align-items:center;gap:8px}
+    .titlebar .title{font-weight:700;font-size:14px}
+    .titlebar .controls{margin-left:auto;display:flex;gap:6px}
+    .btn{background:#c0c0c0;border:2px solid #fff;padding:0 6px;line-height:18px;font-weight:700;box-shadow:inset 1px 1px 0 rgba(255,255,255,.9)}
+
+    .content{padding:12px;display:flex;gap:12px}
+    .col{flex:1}
+
+    /* profile */
+    .pfp{width:96px;height:96px;border:4px solid #fff;box-shadow:inset 1px 1px 0 rgba(255,255,255,.9);}
+    .badgelist{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .badge{background:#e0e0e0;padding:6px;border:2px solid #fff;border-right-color:#808080;border-bottom-color:#808080;}
+
+    /* terminal */
+    .term{background:#000;color:#0f0;padding:10px;height:180px;overflow:auto;font-family:monospace;font-size:13px;border:2px solid #000;margin-top:8px}
+
+    /* sidebar devices */
+    .devices{display:flex;flex-direction:column;gap:10px}
+    .device{background:#e6e6e6;padding:6px;border:2px solid #fff;border-right-color:#808080;border-bottom-color:#808080;text-align:center}
+    .device small{display:block;opacity:.8}
+
+    /* specs box */
+    .specs{background:#fff;padding:8px;border:2px solid #fff;border-right-color:#808080;border-bottom-color:#808080;margin-top:8px}
+    .specs pre{margin:0;font-family:monospace;font-size:13px}
+
+    /* desktop icons */
+    .icons{display:flex;flex-direction:column;gap:10px}
+    .icon{width:120px;padding:8px;background:#c0c0c0;border:2px solid #fff;text-align:center}
+    .icon img{height:48px;margin:0 auto}
+    .icon label{display:block;margin-top:6px;word-break:break-word}
+    .icon small{font-size:11px;}
+
+    /* taskbar */
+    .taskbar{position:fixed;left:0;right:0;bottom:0;height:34px;background:#c0c0c0;border-top:2px solid #808080;display:flex;align-items:center;padding:0 8px;gap:8px}
+    .start{background:linear-gradient(#fff,#c0c0c0);border:2px solid #fff;padding:4px 8px;display:flex;align-items:center;gap:8px}
+    .clock{margin-left:auto;padding-right:8px;font-weight:700}
+
+    /* small screens */
+    @media (max-width:680px){.desktop{flex-direction:column;padding:8px}.win{width:100%}}
+
+    /* subtle pixel font feel */
+    .pixel{letter-spacing:.6px}
+  </style>
+</head>
+<body>
+  <div class="desktop">
+    <!-- left column: icons -->
+    <div class="icons">
+      <div class="icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/1024px-UbuntuCoF.svg.png" alt="ubuntu logo">
+        <label>ubuntu 24.04 lts<br><small>"noble numbat"</small></label>
+        <small>url:<br>https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/1024px-UbuntuCoF.svg.png</small>
+      </div>
+
+      <div class="icon">
+        <img src="https://images.vexels.com/media/users/3/140692/isolated/preview/72d1f12edf758d24f5b6db73bac4f297-linux-logo.png" alt="linux logo">
+        <label>linux kernel</label>
+        <small>url:<br>https://images.vexels.com/media/users/3/140692/isolated/preview/72d1f12edf758d24f5b6db73bac4f297-linux-logo.png</small>
+      </div>
+
+      <div class="icon">
+        <img src="https://i.pinimg.com/236x/27/24/73/2724732ced7a116fc25cfa3f08d4467d.jpg" alt="pfp">
+        <label>mateo.dev<br><small>profile</small></label>
+        <small>url:<br>https://i.pinimg.com/236x/27/24/73/2724732ced7a116fc25cfa3f08d4467d.jpg</small>
+      </div>
+    </div>
+
+    <!-- main window -->
+    <div class="win">
+      <div class="titlebar pixel">
+        <strong class="title">mateo.dev — retro control panel</strong>
+        <div class="controls">
+          <div class="btn">_</div>
+          <div class="btn">☐</div>
+          <div class="btn">✕</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="col">
+          <img class="pfp" src="https://i.pinimg.com/236x/27/24/73/2724732ced7a116fc25cfa3f08d4467d.jpg" alt="pfp">
+          <small>url:<br>https://i.pinimg.com/236x/27/24/73/2724732ced7a116fc25cfa3f08d4467d.jpg</small>
+
+          <div class="badgelist">
+            <div class="badge">ubuntu 24.04 lts</div>
+            <div class="badge">noble numbat</div>
+            <div class="badge">mateo.dev</div>
+            <div class="badge">intel i5-6500</div>
+          </div>
+
+          <div class="term" id="term">$ welcome to mateo.dev\n$ loading retro environment...\n</div>
+        </div>
+
+        <div class="col">
+          <div class="devices">
+            <div class="device">
+              <img src="https://www.at-udl.net/cache/data/31/ipad-wifi-select-space-201909_GEO_US-500x500.png" alt="ipad">
+              <small>ipad (7th gen)</small>
+              <small>url:<br>https://www.at-udl.net/cache/data/31/ipad-wifi-select-space-201909_GEO_US-500x500.png</small>
+            </div>
+
+            <div class="device">
+              <img src="https://shop.mobileklinik.ca/cdn/shop/files/iphone11promax-grey_500x500.png?v=1744073647" alt="iphone">
+              <small>iphone 11 pro max</small>
+              <small>url:<br>https://shop.mobileklinik.ca/cdn/shop/files/iphone11promax-grey_500x500.png?v=1744073647</small>
+            </div>
+
+            <div class="specs">
+              <strong>system specs</strong>
+              <pre>
+cpu: intel(r) core(tm) i5-6500 @ 3.20ghz
+gpu: nvidia geforce gtx 1050 ti
+os: ubuntu 24.04 lts "noble numbat"
+hostname: mateo.dev
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- secondary mini-window -->
+    <div class="win" style="width:300px">
+      <div class="titlebar pixel"><span class="title">files</span></div>
+      <div style="padding:8px;background:#eee;border-top:2px solid #fff;border-left:2px solid #fff;border-bottom:2px solid #808080;border-right:2px solid #808080;">
+        <ul style="margin:0;padding:6px 12px;list-style:disc">
+          <li>~/.bashrc</li>
+          <li>/etc/apt/sources.list</li>
+          <li>projects/mateo.dev</li>
+          <li>documents/retro_notes.txt</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="taskbar">
+    <div class="start">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/1024px-UbuntuCoF.svg.png" alt="u" style="width:18px;height:18px">
+      <strong>start</strong>
+    </div>
+    <div class="pixel">internet explorer</div>
+    <div class="pixel">terminal</div>
+    <div class="clock" id="clock">00:00</div>
+  </div>
+
+  <script>
+    // typewriter into terminal
+    const term = document.getElementById('term');
+    const lines = [
+      '$ uname -a',
+      'linux mateo 6.8.0-0-generic #1 smp x86_64 gnu/linux',
+      '$ cat /etc/lsb-release',
+      'distro: ubuntu\nrelease: 24.04 lts (noble numbat)',
+      '$ welcome to mateo.dev — retro site loaded.'
+    ];
+
+    let i=0, j=0;
+    function typeNext(){
+      if(i>=lines.length) return;
+      const line = lines[i];
+      if(j<=line.length){
+        term.textContent = term.textContent.replace(/\s*$/, '') + line.slice(0,j) + '\n';
+        j++;
+        setTimeout(typeNext, 40);
+      } else {
+        i++; j=0; setTimeout(typeNext, 300);
+      }
+    }
+    setTimeout(typeNext, 600);
+
+    // clock
+    function tick(){
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2,'0');
+      const mm = String(now.getMinutes()).padStart(2,'0');
+      document.getElementById('clock').textContent = hh+':'+mm;
+    }
+    tick(); setInterval(tick, 1000*30);
+
+    // make windows draggable (tiny)
+    document.querySelectorAll('.win').forEach(w=>{
+      const title = w.querySelector('.titlebar');
+      let dragging=false,ox=0,oy=0;
+      title.style.cursor='move';
+      title.addEventListener('pointerdown',(e)=>{dragging=true;ox=e.clientX;oy=e.clientY; title.setPointerCapture(e.pointerId)});
+      window.addEventListener('pointerup',(e)=>{dragging=false});
+      window.addEventListener('pointermove',(e)=>{if(!dragging) return; const dx=e.clientX-ox; const dy=e.clientY-oy; const rect=w.getBoundingClientRect(); w.style.position='absolute'; w.style.left=(rect.left+dx)+'px'; w.style.top=(rect.top+dy)+'px'; ox=e.clientX; oy=e.clientY});
+    });
+  </script>
+</body>
+</html>
